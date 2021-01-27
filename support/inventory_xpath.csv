@@ -1,0 +1,12 @@
+﻿names,xpaths
+ID,/html/body/div[2]/div[3]/div/form/div[1]/div[2]/table/tbody/tr[1]/td[2]/span
+Latitude,/html/body/div[2]/div[3]/div/form/div[3]/table[1]/tbody/tr[1]/td[2]/span
+Longitude,/html/body/div[2]/div[3]/div/form/div[3]/table[1]/tbody/tr[2]/td[2]/span
+VDS_type,"//*[@id=""readonly_configInput.VdsTypeInventory""]"
+Direction,"//*[@id=""readonly_configInput.DirectionInventory""]"
+Active,"//*[@id=""readonly_configInput.ActiveInventory""]"
+Roadway_Type,"//*[@id=""readonly_configInput.RoadTypeInventory""]"
+Roadway_Name,/html/body/div[2]/div[3]/div/form/div[1]/div[4]/table/tbody/tr[2]/td[2]/span
+Cross_Street,/html/body/div[2]/div[3]/div/form/div[1]/div[4]/table/tbody/tr[4]/td[2]/span
+City,"//*[@id=""readonly_configInput.CityInventory""]"
+Mile_Marker,/html/body/div[2]/div[3]/div/form/div[1]/div[4]/table/tbody/tr[8]/td[2]/span
