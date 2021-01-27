@@ -15,7 +15,7 @@ There exist is a hierarchy of efficiency when scraping web data. Some of the swi
 •	BS4
 However, to avoid interacting with the slow GUI, it was found that the SQL URL was formulaic in nature allowing for fast manipulation avert the GUI all together. However, this online database features an apache httpd .htaccess configuration.
 
-![](https://i.ibb.co/S0qxp4K/hatachsm375.png)
+![](https://i.ibb.co/tZzsv9s/hatachsm375.png)
 
 This item cannot be accessed with the above methods. Subsequentially, bounding me to initially “force enter” the password and user name via the combination Selenium and PyAutoGUI. 
 
