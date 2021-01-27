@@ -15,13 +15,13 @@ There exist is a hierarchy of efficiency when scraping web data. Some of the swi
 •	BS4
 However, to avoid interacting with the slow GUI, it was found that the SQL URL was formulaic in nature allowing for fast manipulation avert the GUI all together. However, this online database features an apache httpd .htaccess configuration.
 
-![]( https://i.ibb.co/S0qxp4K/hatachsm375.png)
+![](https://i.ibb.co/S0qxp4K/hatachsm375.png)
 
 This item cannot be accessed with the above methods. Subsequentially, bounding me to initially “force enter” the password and user name via the combination Selenium and PyAutoGUI. 
 
-![]( https://i.giphy.com/media/mhfBmW9QT6G3AF8iVh/giphy.mp4)
+![](https://media4.giphy.com/media/bwEChFLphBvZJtjAug/giphy.gif)
 
 However, this method was not quite fast enough. To boost the speed of selenium, I sought to address the constant time lost at each data request regardless of my own internet speed. To fix this issue I developed an iterative, faux parallel method. In which, you choose your own number of “workers”. I found that managing 6 simultaneous drivers reduced my scraping speed by a multiple of 5.
 
-![]( https://i.giphy.com/media/ynuD2sv5jzlCI5Ce9k/giphy.webp)
+![](https://i.giphy.com/media/ynuD2sv5jzlCI5Ce9k/giphy.webp)
 
