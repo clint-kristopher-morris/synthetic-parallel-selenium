@@ -32,24 +32,22 @@ def generate_url(vds_id, start_date, end_date, server_info):
         url = url + str(var) + server_info[f'template_url{i+1}']  
     return url
 
-def file_mover(download_dirs, working_dir, prev_vds, i=0, srcDst={}):
+def file_mover(download_dirs, working_dir, prev_vds, i=0, allfiles=[]):
+    if not os.path.exists(f'{working_dir}/data/{prev_vds}'):
+        os.mkdir(f'{working_dir}/data/{prev_vds}')
     for path in download_dirs:
-        for file in os.listdir(path):
-            if not os.path.exists(f'{working_dir}/data/{prev_vds}'):
-                os.mkdir(f'{working_dir}/data/{prev_vds}')
-            srcDst[f'{path}/{file}'] = f'{working_dir}/data/{prev_vds}/{prev_vds}_{i}.csv'
-            i += 1
-    files2move = list(srcDst.keys())
-    while len(files2move) > 0:
-        for src, dst in srcDst.items():
+        allfiles = allfiles + glob.glob(f'{path}/*')
+    while len(allfiles) > 0:
+        newset = allfiles
+        for file in newset:
             try:
-                shutil.move(src,dst)
-                files2move.remove(src)
+                shutil.move(file,f'{working_dir}/data/{prev_vds}/{prev_vds}_{i}.csv')
+                allfiles.remove(file)
+                i += 1
             except PermissionError:
-                continue # work around if the file is downloading    
-    return False # only happens once every station
+                continue # work around if the file is downloading 
 
-def generate_date_intervals(period,count,intervals={}):
+def generate_date_intervals(period,count,intervals={},start = '2019-07-31'):
     # period: days in each segment count: number of periods
     for val in range(count):
         date_1 = datetime.datetime.strptime(start, "%Y-%m-%d")
@@ -104,8 +102,8 @@ for idx in range(number_of_workers):
     
 # optional sleep to allow all drivers to fully load before scraping
 time.sleep(10)
+
 move_files = False
-start = '2019-07-31'
 intervals = generate_date_intervals(10,37,intervals={})
 skip = True
 driver2dates = {}
@@ -118,7 +116,7 @@ for vds in vds_df.iterrows():
     
     
     if skip:
-        if vds_num == '3001':
+        if vds_num == '3176':
             skip = False
         else:
             continue
@@ -148,6 +146,7 @@ for vds in vds_df.iterrows():
         # done to provide additional download it with limited time cost.
         if move_files == True:
             move_files = file_mover(download_dirs, working_dir, prev_vds, i=0)
+            move_files = False
             
         # if all workers have a current url to process this loops until at least one completes a job
         while None not in driver2dates.values():
